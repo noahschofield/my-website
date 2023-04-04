@@ -35,3 +35,11 @@ p {
   color: white;
   font-family: subheaderFont;
 }
+
+div {
+  display: inline-block;
+}
+
+img {
+  padding-right: 2rem;
+}
