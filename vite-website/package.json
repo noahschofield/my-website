@@ -10,5 +10,9 @@
   },
   "devDependencies": {
     "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "firebase-tools": "^11.25.2",
+    "three": "^0.151.3"
   }
 }
