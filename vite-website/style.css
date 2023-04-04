@@ -1,6 +1,37 @@
+@font-face {
+  font-family: headerFont; 
+  src: url('./fonts/NoisyWalk.ttf');
+}
+
+@font-face {
+  font-family: subheaderFont; 
+  src: url('./fonts/Zector.ttf');
+}
 
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+main {
+  position: absolute;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+header {
+  grid-column: 1 / 5;
+  padding: 2rem;
+}
+
+h1 {
+  color: white;
+  font-family: headerFont;
+}
+
+p {
+  color: white;
+  font-family: subheaderFont;
 }

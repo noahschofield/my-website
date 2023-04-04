@@ -13,22 +13,35 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-camera.position.setZ(30);
+camera.position.setZ(40);
 
 renderer.render(scene, camera);
 
-const earthTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/noahschofield/pics/main/earth.webp');
-const earthNormal = new THREE.TextureLoader().load('https://raw.githubusercontent.com/noahschofield/pics/main/earth_normalmap.webp');
-
-const sun = new THREE.Mesh(
-  new THREE.SphereGeometry(10, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: earthTexture,
-    normalMap: earthNormal
+const torus = new THREE.Mesh(
+  new THREE.TorusGeometry(10, 3, 16, 100),
+  new THREE.MeshToonMaterial({
+    color: new THREE.Color('#7869DC'),
   })
 )
 
-scene.add(sun)
+const torus2 = new THREE.Mesh(
+  new THREE.TorusGeometry(20, 3, 32, 200),
+  new THREE.MeshToonMaterial({
+    color: new THREE.Color('#E84A5F'),
+  })
+)
+
+scene.add(torus)
+scene.add(torus2)
+
+const ball = new THREE.Mesh(
+  new THREE.SphereGeometry(4, 32, 32),
+  new THREE.MeshToonMaterial({
+    color: new THREE.Color('#5edcae'),
+  })
+)
+
+scene.add(ball)
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(20, 20, 20)
@@ -41,42 +54,19 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({color: 0xffffff})
+  const material = new THREE.MeshToonMaterial({color: 0xffffff})
   const star = new THREE.Mesh(geometry, material)
 
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(500));
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(800));
 
   star.position.set(x, y, z);
   scene.add(star)
 }
 
-Array(2000).fill().forEach(addStar)
-
-const spaceTexture = new THREE.TextureLoader();
-scene.background = spaceTexture.load('https://raw.githubusercontent.com/noahschofield/pics/main/17520.webp');
-
-const moonTexture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/noahschofield/pics/main/moon.webp');
-const moonNormal = new THREE.TextureLoader().load('https://raw.githubusercontent.com/noahschofield/pics/main/moon_normalmap.webp');
-
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalMap: moonNormal
-  })
-)
-
-scene.add(moon)
-
-moon.position.z = 30;
-moon.position.x = -10;
+Array(3500).fill().forEach(addStar)
 
 function moveCamera() {
   const t  = document.body.getBoundingClientRect().top;
-
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
 
   camera.position.x = t * -0.0002;
   camera.position.y = t * -0.0002;
@@ -88,8 +78,11 @@ document.body.onscroll = moveCamera;
 function animate() {
   requestAnimationFrame(animate);
 
-  sun.rotation.y += 0.005;
-  moon.rotation.y += 0.005;
+  torus.rotation.x += 0.015;
+  torus.rotation.y += 0.005;
+
+  torus2.rotation.x += 0.005;
+  torus2.rotation.y += 0.015;
 
   controls.update();
 
