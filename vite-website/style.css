@@ -22,18 +22,21 @@ main {
 }
 
 header {
-  grid-column: 1 / 5;
-  padding: 2rem;
+  grid-column: 1 / 6;
+  padding-left: 2rem;
 }
 
 h1 {
   color: white;
-  font-family: headerFont;
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  font-size: 65px;
 }
 
 p {
   color: white;
   font-family: subheaderFont;
+  font-size: 25px;
 }
 
 div {
@@ -42,4 +45,12 @@ div {
 
 img {
   padding-right: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.subhead {
+  transform: translate(0%, -120%);
 }

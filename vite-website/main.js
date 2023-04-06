@@ -18,7 +18,7 @@ camera.position.setZ(40);
 renderer.render(scene, camera);
 
 const torus = new THREE.Mesh(
-  new THREE.TorusGeometry(10, 3, 16, 100),
+  new THREE.TorusGeometry(10, 3, 32, 200),
   new THREE.MeshToonMaterial({
     color: new THREE.Color('#7869DC'),
   })
@@ -35,7 +35,7 @@ scene.add(torus)
 scene.add(torus2)
 
 const ball = new THREE.Mesh(
-  new THREE.SphereGeometry(4, 32, 32),
+  new THREE.SphereGeometry(4, 64, 64),
   new THREE.MeshToonMaterial({
     color: new THREE.Color('#5edcae'),
   })
@@ -63,7 +63,7 @@ function addStar() {
   scene.add(star)
 }
 
-Array(3500).fill().forEach(addStar)
+Array(2000).fill().forEach(addStar)
 
 function moveCamera() {
   const t  = document.body.getBoundingClientRect().top;
