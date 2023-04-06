@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: Typewriter; 
-  src: url('./fonts/Courier\ Prime.ttf');
+  src: url('./fonts/CourierPrime.ttf');
 }
 
 canvas {
@@ -58,5 +58,14 @@ a {
 }
 
 .subhead {
-  transform: translate(0%, -120%);
+  transform: translate(0%, -50%);
 }
+
+.subhead2 {
+  transform: translate(0%, -100%);
+}
+
+.subhead3 {
+  transform: translate(0%, -150%);
+}
+
