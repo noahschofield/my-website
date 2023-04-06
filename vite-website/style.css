@@ -8,6 +8,11 @@
   src: url('./fonts/Zector.ttf');
 }
 
+@font-face {
+  font-family: Typewriter; 
+  src: url('./fonts/Courier\ Prime.ttf');
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -22,14 +27,15 @@ main {
 }
 
 header {
-  grid-column: 1 / 6;
+  grid-column: 1 / 8;
   padding-left: 2rem;
 }
 
 h1 {
   color: white;
-  font-family: "Rubik", sans-serif;
+  font-family: Typewriter;
   text-transform: uppercase;
+  font-weight: 1;
   font-size: 65px;
 }
 
