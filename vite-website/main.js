@@ -13,6 +13,14 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
+window.addEventListener('resize', function() {
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  renderer.setSize( width, height );
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+});
+
 camera.position.setZ(40);
 
 renderer.render(scene, camera);
@@ -68,9 +76,10 @@ Array(2000).fill().forEach(addStar)
 function moveCamera() {
   const t  = document.body.getBoundingClientRect().top;
 
-  camera.position.x = t * -0.0002;
-  camera.position.y = t * -0.0002;
-  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.25;
+  camera.position.y = t * -0.002;
+  camera.position.z = (t * 0.010) + 40;
+  camera.lookAt(0,0,0);
 }
 
 document.body.onscroll = moveCamera;
